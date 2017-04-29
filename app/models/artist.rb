@@ -2,7 +2,8 @@ class Artist<ActiveRecord::Base
   # include Slug
 
   has_many :songs
-  has_many :genres
+  has_many :song_genres, through: :songs
+  has_many :genres, through: :song_genres
 
   def slug
     self.name.strip.gsub(" ", "-").downcase
